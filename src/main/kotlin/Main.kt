@@ -14,17 +14,23 @@ fun main(){
    rockBlock.clearReceivingBuffer()
    rockBlock.clearSendingBuffer()
 
+   rockBlock.sendTestMessage("HEllO WORLD, DOES This Send?")
+/*
+*  rockBlock.waitForReception(1000, 2) //wait for signal
+   rockBlock.sendAndReceive() //tell rockblock to complete a tx/rx cycle
+*
+* */
+
 
    while(true){
-      println("Signal Level = ${rockBlock.getSignalLevel()}")
+      println("Signal Level = ${rockBlock.getSignalLevel()}, has Reception? = ${rockBlock.hasReception(2)}")
       println("Status = ${rockBlock.status}")
-
-
       sleep(5000)
 
 
 
    }
+
 
 
 }
