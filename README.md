@@ -27,7 +27,7 @@ println("Status = ${rockBlock.status}")
 We also have a helper function to wait for signal and then to send data, used like this;
 
 ```
- rockBlock.sendTestMessage("HEllO WORLD, DOES This Send?")
+ rockBlock.sendTestMessage("HEllO WORLD, DOES THIS SEND?")
  rockBlock.waitForReception(1000, 2) //wait for signal
  rockBlock.sendAndReceive() //tell rockblock to complete a tx/rx cycle
 
