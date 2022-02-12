@@ -1,0 +1,33 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '1.5.10'
+    id 'java'
+}
+
+group 'co.uk.xisystems'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    mavenCentral()
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib"
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+
+    implementation "com.fazecast:jSerialComm:1.3.10"
+
+//    implementation("com.pi4j:pi4j-library:2.1.1")
+//    implementation("com.pi4j:pi4j-gpio-extension:1.3")
+//    implementation("com.pi4j:pi4j-device:1.3")
+
+    implementation ("javax.servlet:servlet-api:2.5")
+    
+
+}
+
+test {
+    useJUnitPlatform()
+}
