@@ -1,4 +1,4 @@
-# RockBlock-SBD
+# RockBlock-SBD - In Alpha, testing underway to ensure operability.
 ## Background
 
 Libaray forked from (https://github.com/slipperyseal/B9) in order to extract classes used to communicate to a RockBLOCK Iridium Short-Burst Data (SBD) modem (https://www.groundcontrol.com/product/rockblock-9603-compact-plug-play-satellite-transmitter/). 
