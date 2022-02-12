@@ -10,16 +10,25 @@ Code has been refactored to use JSerialComm library as oppsed to the Pi4J librar
 Quite simply, establish a Desktop Serial Port and pass that to a RockBlock instatiation.
 
 ```
-   val serialPort = DesktopSerialPort("COM22")
-   val rockBlock = RockBlock(serialPort)
-   rockBlock.initialize()
+val serialPort = DesktopSerialPort("COM22")
+val rockBlock = RockBlock(serialPort)
+rockBlock.initialize()
 
 ```
 
 We can now use the RockBLOCK to send and receive;
 
 ```
-      println("Signal Level = ${rockBlock.getSignalLevel()}, has Reception? = ${rockBlock.hasReception(2)}")
-      println("Status = ${rockBlock.status}")
+println("Signal Level = ${rockBlock.getSignalLevel()}, has Reception? = ${rockBlock.hasReception(2)}")
+println("Status = ${rockBlock.status}")
+
+```
+
+We also have a helper function to wait for signal and then to send data, used like this;
+
+```
+ rockBlock.sendTestMessage("HEllO WORLD, DOES This Send?")
+ rockBlock.waitForReception(1000, 2) //wait for signal
+ rockBlock.sendAndReceive() //tell rockblock to complete a tx/rx cycle
 
 ```
