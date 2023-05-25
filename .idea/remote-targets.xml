@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="RemoteTargetsManager">
+    <targets>
+      <target name="pi@192.168.88.202:22" type="ssh/sftp" uuid="e9ed7dcf-283c-4913-9453-2ab9c2bb4144">
+        <config>
+          <option name="projectRootOnTarget" value="/home/pi/uBloxSara/deploy" />
+          <option name="serverName" value="pi@192.168.88.202:22 password" />
+          <option name="useRsync" value="true" />
+        </config>
+        <ContributedStateBase type="JavaLanguageRuntime">
+          <config>
+            <option name="javaVersionString" value="1.8.0_312" />
+          </config>
+        </ContributedStateBase>
+      </target>
+    </targets>
+  </component>
+</project>

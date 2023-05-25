@@ -1,6 +1,8 @@
 plugins {
-    id 'org.jetbrains.kotlin.jvm' version '1.5.10'
+    id 'org.jetbrains.kotlin.jvm' version '1.9.0-Beta'
     id 'java'
+    id 'application'
+    id 'distribution'
 }
 
 group 'co.uk.xisystems'
@@ -9,6 +11,11 @@ version '1.0-SNAPSHOT'
 repositories {
     mavenCentral()
     mavenCentral()
+    google()
+}
+
+application{
+    mainClassName  = 'MainKt'
 }
 
 dependencies {
@@ -16,6 +23,10 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
     implementation "com.fazecast:jSerialComm:1.3.10"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.2"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.3.9"
+
+
 //    implementation ("javax.servlet:servlet-api:2.5")
     
 

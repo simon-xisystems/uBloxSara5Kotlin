@@ -1,4 +1,4 @@
-package devices.rockblock;
+package devices.serial;
 
 
 

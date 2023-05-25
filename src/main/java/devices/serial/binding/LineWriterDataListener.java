@@ -1,7 +1,7 @@
 package devices.serial.binding;
 
 
-import devices.rockblock.LineWriter;
+import devices.serial.LineWriter;
 import devices.serial.DataListener;
 
 

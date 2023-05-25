@@ -1,4 +1,4 @@
-package devices.rockblock;
+package devices.serial;
 
 public class HexString {
     final private static char[] hexArray = "0123456789ABCDEF".toCharArray();

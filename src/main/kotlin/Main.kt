@@ -1,36 +1,64 @@
 import devices.rockblock.RockBlock
+import devices.saraR5.GpsNMEARxer
+import devices.saraR5.SaraR5
 import devices.serial.DesktopSerialPort
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.launch
 import java.lang.Thread.sleep
 
-fun main(){
-
-   val serialPort = DesktopSerialPort("COM22")
-   val rockBlock = RockBlock(serialPort)
-   rockBlock.initialize()
-
-   println("##### Rock Block Irridium Library ########")
-   println("Device Manufacturer = ${rockBlock.manufacturer}")
-   println("Device revision Number = ${rockBlock.revision}")
-   rockBlock.clearReceivingBuffer()
-   rockBlock.clearSendingBuffer()
-
-   rockBlock.sendTestMessage("HEllO WORLD, DOES This Send?")
-/*
-*  rockBlock.waitForReception(1000, 2) //wait for signal
-   rockBlock.sendAndReceive() //tell rockblock to complete a tx/rx cycle
-*
-* */
-
-
-   while(true){
-      println("Signal Level = ${rockBlock.getSignalLevel()}, has Reception? = ${rockBlock.hasReception(2)}")
-      println("Status = ${rockBlock.status}")
-      sleep(5000)
+fun main() {
+    println("##### uBlox Sara R5 ########")
+    val serialPort = DesktopSerialPort("/dev/ttyGSM2")
+    val saraR5 = SaraR5(serialPort)
+    saraR5.initialize()
 
 
 
-   }
+    println("##### Device ${saraR5.serialNumber} attached #######")
+
+    println("Configuring CMUX and module NMEA settings. ")
+
+    try {
+        saraR5.initialiseGPSNMEAStream()
+    } catch (e: Exception) {
+        println("failed to config NMEA Stream ${e}")
+    }
+
+
+    println("initialising GPS NMEA Stream.")
+
+    val gps = GpsNMEARxer("/dev/ttyGSM3")
+
+
+        gps.openSerialPort()
+        gps.startNmeaStream()
+
+    while(true){
+
+        if(gps.locationFix != null){
+            println("Do we have a fix? ${gps.locationFix}")
+        }
+
+        sleep(5000)
+
+
+    }
+
+//        gps.locationFix?.onEach {
+//            println("new GPS Data - ${it}")
+//        }
+
+
+
+
+
 
 
 
 }
+

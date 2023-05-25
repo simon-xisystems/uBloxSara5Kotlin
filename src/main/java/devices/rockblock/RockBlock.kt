@@ -1,7 +1,7 @@
 package devices.rockblock
 
 import devices.Device
-import devices.rockblock.AtSession
+import devices.serial.AtSession
 import devices.serial.SerialConnection
 import devices.serial.DataListener
 import kotlin.Throws
